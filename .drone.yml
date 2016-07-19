@@ -3,4 +3,7 @@ build:
   commands:
     - go get
     - go build
-    - go test
+    - go get github.com/mattn/goveralls
+    - go get golang.org/x/tools/cmd/cover
+    - go test -covermode=count -coverprofile=profile.cov
+    - goveralls -coverprofile=profile.cov -service drone.io
